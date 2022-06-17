@@ -72,7 +72,7 @@ def home():
     return '<p>Hello from students API!</p>', 200
 
 
-@app.route('/api-json', methods=['common'])
+@app.route('/api-json', methods=['GET'])
 def api_doc_json():
     return docs.swagger_json(), 200
 
@@ -272,4 +272,4 @@ if __name__ == '__main__':
     if not database_exists(engine.url):
         create_database(engine.url)
     db.create_all()
-    app.run(debug=True)
+    app.run(port=8090, debug=True)
