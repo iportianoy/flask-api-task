@@ -272,4 +272,4 @@ if __name__ == '__main__':
     if not database_exists(engine.url):
         create_database(engine.url)
     db.create_all()
-    app.run(port=8090, debug=True)
+    app.run(debug=True)
