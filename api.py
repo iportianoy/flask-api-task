@@ -10,12 +10,21 @@ from flask_apispec import FlaskApiSpec, marshal_with, doc
 
 dotenv.load_dotenv()
 
+app_host = os.environ.get('APP_HOST')
+app_port = os.environ.get('APP_PORT')
 db_user = os.environ.get('DB_USERNAME')
 db_pass = os.environ.get('DB_PASSWORD')
 db_hostname = os.environ.get('DB_HOSTNAME')
 db_name = os.environ.get('DB_NAME')
+db_port = os.environ.get('DB_PORT')
 
-DB_URI = 'mysql+pymysql://{db_username}:{db_password}@{db_host}/{database}'.format(db_username=db_user, db_password=db_pass, db_host=db_hostname, database=db_name)
+DB_URI = (
+    'mysql+pymysql://{db_username}:{db_password}@'
+    '{db_host}:{db_port}/{database}'.format(
+        db_username=db_user, db_password=db_pass, db_host=db_hostname,
+        db_port=db_port, database=db_name
+    )
+)
 
 engine = create_engine(DB_URI, echo=True)
 
@@ -272,4 +281,4 @@ if __name__ == '__main__':
     if not database_exists(engine.url):
         create_database(engine.url)
     db.create_all()
-    app.run(port=8090, debug=True)
+    app.run(host=app_host, port=app_port, debug=True)
