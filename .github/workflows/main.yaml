@@ -57,7 +57,6 @@ jobs:
     name: Deploy
     needs: build_and_push
     env:
-#      HOST: 3.66.156.134
       USERNAME: ubuntu
     strategy:
       matrix:
@@ -82,9 +81,3 @@ jobs:
             cd flask-api-task
             docker compose down
             docker compose up -d
-#            # Run a new container from a new image
-#            docker run -d \
-#            --restart always \
-#            -p 5000:5000 \
-#            --name flask-app \
-#            ${{ env.REGISTRY }}:${{ needs.build_and_push.outputs.commit_hash }}

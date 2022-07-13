@@ -102,7 +102,7 @@ def api_doc_ui():
     },
 )
 def api_health_ok():
-    return 'Ok', 200
+    return 'Health Ok', 200
 
 
 @app.route('/api/health-check/bad', methods=['GET'])
