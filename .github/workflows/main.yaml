@@ -72,6 +72,7 @@ jobs:
             docker login -u $DOCKER_USER -p $DOCKERHUB_TOKEN
             docker stop flask_api
             docker rm flask_api
+            cd flask-api-task
             docker compose up -d
 #            # Run a new container from a new image
 #            docker run -d \
