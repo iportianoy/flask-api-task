@@ -60,6 +60,7 @@ class Student(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+
 class StudentSchema(Schema):
     id = fields.Integer()
     name = fields.Str()
