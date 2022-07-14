@@ -80,4 +80,17 @@ jobs:
             docker rm flask_api
             cd flask-api-task
             docker compose down
-            docker compose up -d
+            docker pull ${{ env.REGISTRY }}:latest
+            docker compose up --build -d
+
+  report:
+    runs-on: ubuntu-latest
+    name: Reports
+    strategy:
+      matrix:
+        host: [ 3.66.156.134, 54.93.95.155 ]
+    steps:
+      - name: check health
+        uses: wei/curl@master
+        with:
+          args: http://${{ matrix.host }}:5000/api/health-check/ok
