@@ -76,8 +76,6 @@ jobs:
           script: |
             # login docker
             docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN
-            docker stop flask_api
-            docker rm flask_api
             cd flask-api-task
             docker compose down
             docker pull ${{ env.REGISTRY }}:latest
