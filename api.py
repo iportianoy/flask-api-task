@@ -16,13 +16,12 @@ db_user = os.environ.get('DB_USERNAME')
 db_pass = os.environ.get('DB_PASSWORD')
 db_hostname = os.environ.get('DB_HOSTNAME')
 db_name = os.environ.get('DB_NAME')
-db_port = os.environ.get('DB_PORT')
 
 DB_URI = (
     'mysql+pymysql://{db_username}:{db_password}@'
-    '{db_host}:{db_port}/{database}'.format(
+    '{db_host}/{database}'.format(
         db_username=db_user, db_password=db_pass, db_host=db_hostname,
-        db_port=db_port, database=db_name
+        database=db_name
     )
 )
 
